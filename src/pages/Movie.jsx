@@ -1,16 +1,28 @@
-import { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom'
+import NavBar from '../components/NavBar'
 
 function Movie() {
-  return (
-    <>
-      <header>
-        {/* What component should go here? */}
-      </header>
-      <main>
-        {/* Movie info here! */}
-      </main>
-    </>
-  );
-};
+  const { id } = useParams()
 
-export default Movie;
+  const movie ={
+    id: id,
+    title: title,
+    time: time,
+    genres: genres
+  }
+
+  return (
+    <div>
+      <NavBar />
+      <h1>{movie.title}</h1>
+      <p>{movie.time}</p>
+      <div>
+        {movie.genres.map((genre, index) => (
+          <span key={index}>{genre}</span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default Movie
